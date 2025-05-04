@@ -3,6 +3,8 @@ import React from "react";
 
 export default function WhyChoose({ data }) {
     const [selectedData, setSelectedData] = React.useState(data?.listing[0]);
+
+    const imageSrc = `${baseUrl}${selectedData?.image[0].url}` || "/images/default.png";
   return (
     <section className="py-12">
       <h1 className="text-xl font-normal text-center mb-1">Why Choose Us</h1>
@@ -21,13 +23,13 @@ export default function WhyChoose({ data }) {
           </div>
           <div className="absolute w-64 h-64 bg-gray-300 rounded-full overflow-hidden top-0 right-0">
             <img
-                src={`${baseUrl}${selectedData?.image[0].url}`}
+                src={'/images/default.png'}
                 alt="Feature Image"
                 className="w-full h-full object-cover rounded-full"
               />
           </div>
         </div>
-
+    
         <div className="w-full md:w-1/2 flex flex-col gap-4">
           {data?.listing?.map((item, index) => (
             <button className="py-2 px-4 hover:bg-[rgba(160,79,104)] border border-gray-300 rounded-full font-semibold text-gray-800 bg-gray-300 hover:text-white transition flex items-center justify-between cursor-pointer" key={index} onClick={() => setSelectedData(item)}>
